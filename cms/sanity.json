@@ -1,7 +1,7 @@
 {
   "root": true,
   "project": {
-    "name": "Crypto-G-Hub Calendar",
+    "name": "G-Hub Calendar",
     "basePath": "/admin"
   },
   "api": {
