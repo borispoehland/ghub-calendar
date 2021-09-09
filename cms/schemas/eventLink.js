@@ -5,7 +5,7 @@ export default {
   fields: [
     {
       type: 'string',
-      name: 'name',
+      name: 'label',
       title: 'Ressource name',
     },
     {

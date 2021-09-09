@@ -1,11 +1,12 @@
 {
   "root": true,
   "project": {
-    "name": "G-Hub Calendar"
+    "name": "Crypto-G-Hub Calendar",
+    "basePath": "/admin"
   },
   "api": {
-    "projectId": "7y9ybicz",
-    "dataset": "production"
+    "projectId": "placeholder",
+    "dataset": "placeholder"
   },
   "plugins": [
     "@sanity/base",

@@ -34,5 +34,6 @@ yarn-error.log*
 .vercel
 
 # sanity
-sanity-backend/node_modules
+cms/node_modules
+cms/.env.development
 public/admin

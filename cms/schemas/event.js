@@ -4,17 +4,17 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'name',
+      name: 'title',
       title: 'Event name',
       type: 'string',
     },
     {
-      name: 'startTime',
+      name: 'start',
       title: 'Event start time (UTC)',
       type: 'datetime',
     },
     {
-      name: 'endTime',
+      name: 'end',
       title: 'Event end time (UTC)',
       type: 'datetime',
     },
@@ -23,6 +23,11 @@ export default {
       title: 'Event useful links (website, whitepaper, medium article, ...)',
       type: 'array',
       of: [{ type: 'eventLink' }],
+    },
+    {
+      name: 'description',
+      title: 'Description',
+      type: 'eventBlockContent',
     },
   ],
 };
