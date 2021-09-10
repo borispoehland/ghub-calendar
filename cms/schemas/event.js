@@ -10,13 +10,19 @@ export default {
     },
     {
       name: 'start',
-      title: 'Event start time (UTC)',
+      title: 'Event start time (your local time)',
       type: 'datetime',
     },
     {
       name: 'end',
-      title: 'Event end time (UTC)',
+      title: 'Event end time (your local time)',
       type: 'datetime',
+    },
+    {
+      name: 'type',
+      title: 'Event type',
+      type: 'reference',
+      to: [{ type: 'eventType' }],
     },
     {
       name: 'links',

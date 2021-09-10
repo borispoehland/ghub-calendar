@@ -29,12 +29,12 @@ h3 {
     @apply text-lg
 }
 
-.rbc-event, .rbc-day-slot .rbc-background-event {
-    @apply bg-primary
-}
-
 .rbc-event:focus, .rbc-day-slot .rbc-background-event:focus {
     @apply outline-none
+}
+
+.react-responsive-modal-closeButton {
+    top: 22px
 }
 
 

@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors');
+
 module.exports = {
   purge: [
     './src/pages/**/*.{js,ts,jsx,tsx}',
@@ -7,7 +9,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#FF8C00',
+        primary: colors.violet['700'],
       },
       minWidth: {
         300: '300px',

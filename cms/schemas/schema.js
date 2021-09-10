@@ -7,6 +7,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 import event from './event';
 import eventLink from './eventLink';
 import eventBlockContent from './eventBlockContent';
+import eventType from './eventType';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -14,5 +15,5 @@ export default createSchema({
   name: 'default',
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
-  types: schemaTypes.concat([event, eventLink, eventBlockContent]),
+  types: schemaTypes.concat([event, eventLink, eventBlockContent, eventType]),
 });
