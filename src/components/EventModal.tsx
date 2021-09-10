@@ -51,22 +51,16 @@ const EventModal = ({
       {hasStartDate && (
         <p className="flex flex-wrap gap-1 items-center">
           <BsClock />
-          <Moment utc format="Do MMM hh:mm A">
-            {start}
-          </Moment>
+          <Moment format="Do MMM hh:mm A">{start}</Moment>
           {hasEndDate && (
             <>
               -{' '}
               {moment(start).date() === moment(end).date() ? (
                 // same day
-                <Moment utc format="hh:mm A">
-                  {end}
-                </Moment>
+                <Moment format="hh:mm A">{end}</Moment>
               ) : (
                 // different day
-                <Moment utc format="Do MMM hh:mm A">
-                  {end}
-                </Moment>
+                <Moment format="Do MMM hh:mm A">{end}</Moment>
               )}
             </>
           )}

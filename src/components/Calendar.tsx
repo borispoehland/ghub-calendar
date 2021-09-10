@@ -1,6 +1,6 @@
 import { Calendar as ReactCalendar, momentLocalizer } from 'react-big-calendar';
-import moment from 'moment';
 import { IEvent, IParsedEvent } from '../libs/sanity/queries';
+import moment from 'moment-timezone';
 import { useState } from 'react';
 import EventModal from './EventModal';
 
@@ -9,6 +9,8 @@ import tailwindConfig from '../../tailwind.config.js';
 
 // @ts-ignore
 const fullConfig = resolveConfig(tailwindConfig);
+
+moment.tz.setDefault('UTC');
 
 interface IProps {
   events: IEvent[];
