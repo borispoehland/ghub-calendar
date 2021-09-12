@@ -1,16 +1,15 @@
 import { Calendar as ReactCalendar, momentLocalizer } from 'react-big-calendar';
 import { IEvent, IParsedEvent } from '../libs/sanity/queries';
-import moment from 'moment-timezone';
+import moment from 'moment';
 import { useState } from 'react';
 import EventModal from './EventModal';
 
 import resolveConfig from 'tailwindcss/resolveConfig';
 import tailwindConfig from '../../tailwind.config.js';
+import { convertDateToUTC } from '../utils/dateUtils';
 
 // @ts-ignore
 const fullConfig = resolveConfig(tailwindConfig);
-
-moment.tz.setDefault('UTC');
 
 interface IProps {
   events: IEvent[];
@@ -18,15 +17,11 @@ interface IProps {
 
 const localizer = momentLocalizer(moment);
 
-export const parseEvent = (event: IEvent): IParsedEvent => {
-  const hasStartDate = Boolean(event.start);
-  const hasEndDate = Boolean(event.end);
+const parseEvent = (event: IEvent) => {
   return {
     ...event,
-    start: new Date(event.start),
-    end: hasEndDate ? new Date(event.end) : new Date(event.start),
-    hasStartDate,
-    hasEndDate,
+    start: convertDateToUTC(new Date(event.start)),
+    end: convertDateToUTC(new Date(event.end ?? event.start)),
   };
 };
 

@@ -1,4 +1,4 @@
-import { IParsedEvent } from '../libs/sanity/queries';
+import { IEvent, IParsedEvent } from '../libs/sanity/queries';
 import Moment from 'react-moment';
 import Link from './ui-components/Link';
 import BlockContent from '@sanity/block-content-to-react';
@@ -13,18 +13,12 @@ interface IProps {
 }
 
 const EventModal = ({
-  currentEvent: {
-    start,
-    end,
-    links,
-    title,
-    description,
-    type,
-    hasEndDate,
-    hasStartDate,
-  },
+  currentEvent: { start, end, links, title, description, type },
   onClose,
 }: IProps): JSX.Element => {
+  const isDifferentDate = Boolean(moment(start).diff(moment(end)));
+  const isSameDay = moment(start).date() === moment(end).date();
+
   return (
     <Modal
       open
@@ -48,14 +42,14 @@ const EventModal = ({
           </span>
         </p>
       )}
-      {hasStartDate && (
+      {start && (
         <p className="flex flex-wrap gap-1 items-center">
           <BsClock />
           <Moment format="Do MMM hh:mm A">{start}</Moment>
-          {hasEndDate && (
+          {isDifferentDate && (
             <>
               -{' '}
-              {moment(start).date() === moment(end).date() ? (
+              {isSameDay ? (
                 // same day
                 <Moment format="hh:mm A">{end}</Moment>
               ) : (

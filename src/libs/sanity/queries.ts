@@ -23,8 +23,6 @@ export interface IEvent extends ICommonEvent {
 export interface IParsedEvent extends ICommonEvent {
   start: Date;
   end: Date;
-  hasStartDate: boolean;
-  hasEndDate: boolean;
 }
 
 const eventFields = `
