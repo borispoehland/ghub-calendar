@@ -8,8 +8,14 @@ interface IEventType {
   color: string;
 }
 
+interface ISlug {
+  _type: string;
+  current: string;
+}
+
 interface ICommonEvent {
   title: string;
+  slug: ISlug;
   description: string;
   links: IEventLink[];
   type: IEventType;
@@ -27,6 +33,7 @@ export interface IParsedEvent extends ICommonEvent {
 
 const eventFields = `
     title,
+    slug,
     start,
     end,
     type->{color,label},

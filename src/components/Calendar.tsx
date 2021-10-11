@@ -1,12 +1,13 @@
 import { Calendar as ReactCalendar, momentLocalizer } from 'react-big-calendar';
 import { IEvent, IParsedEvent } from '../libs/sanity/queries';
 import moment from 'moment';
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import EventModal from './EventModal';
 
 import resolveConfig from 'tailwindcss/resolveConfig';
 import tailwindConfig from '../../tailwind.config.js';
 import { convertDateToUTC } from '../utils/dateUtils';
+import { useRouter } from 'next/router';
 
 // @ts-ignore
 const fullConfig = resolveConfig(tailwindConfig);
@@ -25,8 +26,26 @@ const parseEvent = (event: IEvent) => {
   };
 };
 
+const useOpenEventFromUrlQuery = (
+  events: IEvent[],
+  eventSlug: string,
+  setCurrentEvent: Dispatch<SetStateAction<IParsedEvent | null>>
+) => {
+  useEffect(() => {
+    const matchingEvent = events.find(
+      (event) => event.slug.current === eventSlug
+    );
+
+    if (matchingEvent) setCurrentEvent(parseEvent(matchingEvent));
+  }, [events, eventSlug, setCurrentEvent]);
+};
+
 const Calendar = ({ events }: IProps): JSX.Element => {
+  const { event } = useRouter().query;
+
   const [currentEvent, setCurrentEvent] = useState<IParsedEvent | null>(null);
+
+  useOpenEventFromUrlQuery(events, event as string, setCurrentEvent);
 
   return (
     <>

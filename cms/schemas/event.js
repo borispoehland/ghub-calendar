@@ -9,6 +9,14 @@ export default {
       type: 'string',
     },
     {
+      name: 'slug',
+      title: 'URL slug',
+      type: 'slug',
+      options: {
+        source: 'title',
+      },
+    },
+    {
       name: 'start',
       title: 'Event start time (your local time)',
       type: 'datetime',
